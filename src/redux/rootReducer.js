@@ -1,9 +1,14 @@
 import cities from './../mock/cities.json'
-import { SET_SUMMARIES, SET_CHIPS } from './actions/types'
+import { SET_SUMMARIES, SET_CHIPS, SET_SELECTED_CITY,
+  SET_FIVE_DAY_FORECAST
+} from './actions/types'
 
 const initialState = {
   selectedCity: cities[0].id,
   cities: cities.map(c => c.id),
+  summaries: [],
+  chips: [],
+  forecast: {},
 }
 
 export default (state = initialState, action) => {
@@ -18,6 +23,14 @@ export default (state = initialState, action) => {
 
     case SET_CHIPS: {
       return { ...state, chips: action.payload }
+    }
+
+    case SET_SELECTED_CITY: {
+      return { ...state, selectedCity: action.payload }
+    }
+
+    case SET_FIVE_DAY_FORECAST: {
+      return { ...state, forecast: action.payload }
     }
 
     default: {

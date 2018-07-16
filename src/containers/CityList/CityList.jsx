@@ -11,7 +11,7 @@ const styles = {
 
 class CityList extends PureComponent {
   render() {
-    const { summaries } = this.props
+    const { summaries, getForecast } = this.props
 
     return (
       <Col>
@@ -20,7 +20,11 @@ class CityList extends PureComponent {
             <ListGroupItem
               key={uuidv1()}
             >
-              <Col className="d-flex justify-content-between align-items-center">
+              <Col
+                className="d-flex justify-content-between align-items-center"
+                style={{ cursor: 'pointer' }}
+                onClick={() => getForecast(summ.id)}
+              >
                 <p className="mb-0 h4 d-inline">{summ.name}</p>
                 <Row className="d-flex flex-column align-items-center">
                   <img
