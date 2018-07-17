@@ -12,14 +12,13 @@ const styles = {
 class CityList extends PureComponent {
   render() {
     const { summaries, getForecast } = this.props
+    console.log(summaries);
 
     return (
-      <Col>
+      <Col className="mt-4">
         <ListGroup style={styles.list}>
-          {summaries.length > 0 && summaries.map((summ) => (
-            <ListGroupItem
-              key={uuidv1()}
-            >
+          {(summaries.length > 0 && summaries.map((summ) => (
+            <ListGroupItem key={uuidv1()}>
               <Col
                 className="d-flex justify-content-between align-items-center"
                 style={{ cursor: 'pointer' }}
@@ -34,9 +33,11 @@ class CityList extends PureComponent {
                   />
                   <small>{summ.temp} °C</small>
                 </Row>
-            </Col>
+              </Col>
             </ListGroupItem>
-          ))}
+          ))) || (
+              <p className="h2">No data to display</p>
+          )}
         </ListGroup>
       </Col>
     )

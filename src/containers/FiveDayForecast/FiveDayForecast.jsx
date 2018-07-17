@@ -57,7 +57,11 @@ class FiveDayForecast extends PureComponent {
               ))}
             </Col>
           </Row>) || (
-            <p className="h2">Loading data ...</p>
+            <Row>
+              <Col className="p-0">
+                <p className="h2">Loading data ...</p>
+              </Col>
+            </Row>
           )
         }
       </Col>

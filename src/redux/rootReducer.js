@@ -1,6 +1,6 @@
 import cities from './../mock/cities.json'
 import { SET_SUMMARIES, SET_CHIPS, SET_SELECTED_CITY,
-  SET_FIVE_DAY_FORECAST
+  SET_FIVE_DAY_FORECAST, SET_FILTER_TYPE, SET_TEMP
 } from './actions/types'
 
 const initialState = {
@@ -9,6 +9,11 @@ const initialState = {
   summaries: [],
   chips: [],
   forecast: {},
+  filterType: 'name',
+  temperature: {
+    min: 0,
+    max: 0
+  }
 }
 
 export default (state = initialState, action) => {
@@ -31,6 +36,20 @@ export default (state = initialState, action) => {
 
     case SET_FIVE_DAY_FORECAST: {
       return { ...state, forecast: action.payload }
+    }
+
+    case SET_FILTER_TYPE: {
+      return { ...state, filterType: action.payload }
+    }
+
+    case SET_TEMP: {
+      return {
+        ...state,
+        temperature: {
+          ...state.temperature,
+          [action.payload.key]: action.payload.value
+        }
+      }
     }
 
     default: {
